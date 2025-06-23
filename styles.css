@@ -1,0 +1,340 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background-color: #f5f5f5;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #666;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    min-height: 500px;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('hero-image.jpg') center/cover no-repeat;
+    /* REPLACE 'hero-image.jpg' WITH YOUR ACTUAL HERO IMAGE PATH */
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+}
+
+.cta-button {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 2px solid white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: white;
+    color: #333;
+}
+
+/* About Section */
+.about {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 800px;
+    color: #666;
+}
+
+/* Ministries Section */
+.ministries {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.ministries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.ministry-card {
+    text-align: center;
+    padding: 2rem;
+}
+
+.ministry-icon {
+    margin-bottom: 1.5rem;
+}
+
+.icon-placeholder {
+    font-size: 4rem;
+    color: #333;
+    display: inline-block;
+}
+
+/* REPLACE ICON PLACEHOLDERS WITH ACTUAL ICONS:
+   - Cross icon for Evangelism
+   - Heart icon for Humanitarian Outreach  
+   - Building/House icon for Community Transformation
+*/
+
+.ministry-card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.ministry-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Get Involved Section */
+.get-involved {
+    padding: 80px 0;
+    background-color: #f5f5f5;
+}
+
+.get-involved-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.get-involved-text h2 {
+    margin-bottom: 1rem;
+}
+
+.get-involved-text p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.learn-more-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.learn-more-button:hover {
+    background-color: #555;
+}
+
+.logo-image {
+    width: 120px;
+    height: 60px;
+    object-fit: cover;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: #f5f5f5;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .ministries-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .get-involved-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .cta-button,
+    .learn-more-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .ministry-card {
+        padding: 1.5rem;
+    }
+
+    .icon-placeholder {
+        font-size: 3rem;
+    }
+}
+
+/* Additional hover effects and transitions */
+.ministry-card {
+    transition: transform 0.3s ease;
+}
+
+.ministry-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
