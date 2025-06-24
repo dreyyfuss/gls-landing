@@ -122,6 +122,158 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const submitButton = document.getElementById('submitButton');
+    const buttonText = submitButton.querySelector('.button-text');
+    const buttonLoader = submitButton.querySelector('.button-loader');
+
+    // Form submission handler
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!validateForm()) {
+            return;
+        }
+        
+        // Show loading state
+        setLoadingState(true);
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const formObject = Object.fromEntries(formData);
+        
+        try {
+            // Option 1: Using EmailJS (recommended for client-side)
+            await sendEmailWithEmailJS(formObject);
+            
+            // Option 2: Using your own backend
+            // await sendEmailToBackend(formObject);
+            
+            // Option 3: Using Formspree
+            // await sendEmailWithFormspree(formObject);
+            
+            showSuccessMessage();
+            contactForm.reset();
+            
+        } catch (error) {
+            console.error('Error sending email:', error);
+            showNotification('Failed to send message. Please try again.', 'error');
+        } finally {
+            setLoadingState(false);
+        }
+    });
+    
+    // Form validation
+    function validateForm() {
+        let isValid = true;
+        const requiredFields = ['name', 'email', 'subject', 'message'];
+        
+        requiredFields.forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            const formGroup = field.closest('.form-group');
+            
+            // Remove existing error states
+            formGroup.classList.remove('error');
+            const existingError = formGroup.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // Validate field
+            if (!field.value.trim()) {
+                showFieldError(formGroup, 'This field is required');
+                isValid = false;
+            } else if (fieldName === 'email' && !validateEmail(field.value)) {
+                showFieldError(formGroup, 'Please enter a valid email address');
+                isValid = false;
+            }
+        });
+        
+        return isValid;
+    }
+    
+    function showFieldError(formGroup, message) {
+        formGroup.classList.add('error');
+        const errorElement = document.createElement('div');
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        formGroup.appendChild(errorElement);
+    }
+    
+    function setLoadingState(loading) {
+        if (loading) {
+            submitButton.disabled = true;
+            buttonText.style.display = 'none';
+            buttonLoader.style.display = 'inline-block';
+        } else {
+            submitButton.disabled = false;
+            buttonText.style.display = 'inline-block';
+            buttonLoader.style.display = 'none';
+        }
+    }
+    
+    function showSuccessMessage() {
+        // Create success message element
+        let successMessage = document.querySelector('.success-message');
+        if (!successMessage) {
+            successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            contactForm.insertBefore(successMessage, contactForm.firstChild);
+        }
+        
+        successMessage.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+        successMessage.classList.add('show');
+        
+        // Hide after 5 seconds
+        setTimeout(() => {
+            successMessage.classList.remove('show');
+        }, 5000);
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+});
+
+// EMAIL SENDING OPTIONS
+
+// Option 1: EmailJS (Client-side solution - RECOMMENDED)
+async function sendEmailWithEmailJS(formData) {
+    // First, you need to:
+    // 1. Sign up at https://www.emailjs.com/
+    // 2. Create an email service (Gmail, Outlook, etc.)
+    // 3. Create an email template
+    // 4. Get your public key, service ID, and template ID
+    
+    // Add EmailJS script to your HTML head:
+    // <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    // Initialize EmailJS (replace with your public key)
+    emailjs.init("LB7dInoM_AnmRU0ZC");
+    
+    // Send email (replace with your service ID and template ID)
+
+    const response = await emailjs.send(
+        "service_2l4nb9w",
+        "template_imgme1f",
+        {
+            name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone,
+            title: formData.subject,
+            message: formData.message,
+            to_email: "your-email@organization.org"
+        }
+    );
+    
+    // // For demo purposes, simulate success
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+    // console.log('Email sent successfully (demo)');
+}
+
+
 // Form validation and handling (if you add contact forms later)
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
