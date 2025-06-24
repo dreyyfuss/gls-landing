@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const donateButton = document.querySelector('.cta-button');
     if (donateButton) {
         donateButton.addEventListener('click', function() {
-            // Add your donation page redirect or modal logic here
+            // Add donation page redirect or modal logic here
             console.log('Donate button clicked');
             // Example: window.location.href = '/donate';
             alert('Redirect to donation page - Replace this with actual donation logic');
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const learnMoreButton = document.querySelector('.learn-more-button');
     if (learnMoreButton) {
         learnMoreButton.addEventListener('click', function() {
-            // Add your learn more page redirect or modal logic here
+            // Add learn more page redirect or modal logic here
             console.log('Learn More button clicked');
             // Example: window.location.href = '/get-involved';
             alert('Redirect to get involved page - Replace this with actual page logic');
@@ -146,14 +146,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const formObject = Object.fromEntries(formData);
         
         try {
-            // Option 1: Using EmailJS (recommended for client-side)
+
             await sendEmailWithEmailJS(formObject);
-            
-            // Option 2: Using your own backend
-            // await sendEmailToBackend(formObject);
-            
-            // Option 3: Using Formspree
-            // await sendEmailWithFormspree(formObject);
             
             showSuccessMessage();
             contactForm.reset();
@@ -237,23 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// EMAIL SENDING OPTIONS
 
-// Option 1: EmailJS (Client-side solution - RECOMMENDED)
 async function sendEmailWithEmailJS(formData) {
-    // First, you need to:
-    // 1. Sign up at https://www.emailjs.com/
-    // 2. Create an email service (Gmail, Outlook, etc.)
-    // 3. Create an email template
-    // 4. Get your public key, service ID, and template ID
-    
-    // Add EmailJS script to your HTML head:
-    // <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
-    // Initialize EmailJS (replace with your public key)
+
     emailjs.init("LB7dInoM_AnmRU0ZC");
-    
-    // Send email (replace with your service ID and template ID)
 
     const response = await emailjs.send(
         "service_2l4nb9w",
@@ -274,7 +255,6 @@ async function sendEmailWithEmailJS(formData) {
 }
 
 
-// Form validation and handling (if you add contact forms later)
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
