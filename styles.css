@@ -45,7 +45,7 @@ body {
 
 .nav-menu a {
     text-decoration: none;
-    color: #333;
+    color: #1a75bb;
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -114,7 +114,7 @@ body {
 }
 
 .cta-button {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #04abec;
     color: white;
     border: 2px solid white;
     padding: 15px 30px;
@@ -126,7 +126,7 @@ body {
 }
 
 .cta-button:hover {
-    background-color: white;
+    background-color: #1a75bb;
     color: #333;
 }
 
@@ -140,7 +140,7 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 2rem;
-    color: #333;
+    color: #1a75bb;
     text-transform: uppercase;
 }
 
@@ -189,7 +189,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1a75bb;
     text-transform: uppercase;
 }
 
@@ -222,7 +222,7 @@ body {
 }
 
 .learn-more-button {
-    background-color: #333;
+    background-color: #04abec;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -234,7 +234,7 @@ body {
 }
 
 .learn-more-button:hover {
-    background-color: #555;
+    background-color: #1a75bb;
 }
 
 .logo-image {
@@ -342,7 +342,7 @@ body {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #333;
+    color: #1a75bb;
 }
 
 .contact-info p {
@@ -446,7 +446,7 @@ body {
 }
 
 .submit-button {
-    background-color: #333;
+    background-color: #04abec;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -460,7 +460,7 @@ body {
 }
 
 .submit-button:hover {
-    background-color: #555;
+    background-color: #1a75bb;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
