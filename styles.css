@@ -681,6 +681,12 @@ html {
     color: white;
 }
 
+.footer-contact-box {
+    display: block;
+    align-items: center;
+    align-self: center;
+}
+
 .footer-contact p {
     color: #ccc;
     margin-bottom: 0.75rem;
